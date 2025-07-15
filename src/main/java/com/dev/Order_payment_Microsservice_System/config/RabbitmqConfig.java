@@ -7,6 +7,7 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,13 +15,16 @@ import org.springframework.context.annotation.Configuration;
 @EnableRabbit
 public class RabbitmqConfig {
 
-    public final String ORDER_QUEUE = "order.queue";
-    public final String QUEUE_EXCHANGE = "exchange.order";
-    public final String ORDER_KEY_QUEUE = "new.queue";
+    @Value("${queue.name.order}")
+    public String QUEUE_NAME;
+    @Value("${queue.exchange.order}")
+    public String QUEUE_EXCHANGE ;
+    @Value("${queue.routing.key.order}")
+    public String ORDER_KEY_QUEUE ;
 
     @Bean
     public Queue queue(){
-        return QueueBuilder.durable(ORDER_QUEUE).build();
+        return QueueBuilder.durable(QUEUE_NAME).build();
     }
 
     @Bean
@@ -28,7 +32,7 @@ public class RabbitmqConfig {
         return new DirectExchange(QUEUE_EXCHANGE);
     }
 
-    // 3. Binding entre exchange e fila
+    //Binding bettween exchange and queue
     @Bean
     public Binding bindingQueue(){
         return BindingBuilder
@@ -48,7 +52,5 @@ public class RabbitmqConfig {
         rabbitTemplate.setMessageConverter(messageConverter);
         return rabbitTemplate;
     }
-
-
 
 }
