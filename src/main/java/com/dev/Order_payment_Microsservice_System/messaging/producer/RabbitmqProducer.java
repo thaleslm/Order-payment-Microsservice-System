@@ -9,7 +9,7 @@ public class RabbitmqProducer {
     @Autowired
     private  AmqpTemplate amqpTemplate;
 
-    public void send(String exchange, String routingKey, Object playload){
+    public void send(String exchange, String routingKey, Object playload) throws Exception{
         amqpTemplate.convertAndSend(exchange,routingKey,playload);
         System.out.println("Success send message!"+ exchange + routingKey+ playload);
     }

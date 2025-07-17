@@ -17,7 +17,12 @@ public class OrderProducerService {
     private RabbitmqProducer rabbitmqProducer;
 
     public void SendOrderToQueue(Order order){
-        this.rabbitmqProducer.send(QUEUE_EXCHANGE,ORDER_KEY_QUEUE,order);
+        try {
+            this.rabbitmqProducer.send(QUEUE_EXCHANGE,ORDER_KEY_QUEUE,order);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
     }
 }
