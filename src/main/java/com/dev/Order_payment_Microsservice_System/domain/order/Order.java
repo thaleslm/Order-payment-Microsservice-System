@@ -21,4 +21,9 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private StatusType status;
+
+    public Order(String description, StatusType status) {
+        this.description = description;
+        this.status = status;
+    }
 }
