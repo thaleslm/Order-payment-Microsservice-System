@@ -7,6 +7,8 @@ import com.dev.Order_payment_Microsservice_System.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class OrderService {
     @Autowired
@@ -17,12 +19,19 @@ public class OrderService {
     public void enqueueOrder(OrderDTO order){
         Order newOrder = new Order(order.description(), StatusType.PROCESSING);
         var orderSaved =this.saveOrder(newOrder);
-
         this.orderProducerService.SendOrderToQueue(orderSaved);
     }
 
     private Order saveOrder(Order order){
         return this.orderRepository.save(order);
+    }
+
+    public void processOrder(Long orderId){
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(()-> new RuntimeException("Order not found"));
+
+        order.setStatus(StatusType.COMPLETED);
+        this.saveOrder(order);
     }
 
 }
