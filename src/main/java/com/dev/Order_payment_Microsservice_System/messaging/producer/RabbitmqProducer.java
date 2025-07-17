@@ -1,4 +1,4 @@
-package com.dev.Order_payment_Microsservice_System.service;
+package com.dev.Order_payment_Microsservice_System.messaging.producer;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
