@@ -16,12 +16,13 @@ public class OrderService {
 
     public void enqueueOrder(OrderDTO order){
         Order newOrder = new Order(order.description(), StatusType.PROCESSING);
-        this.orderProducerService.SendOrderToQueue(newOrder);
-        this.saveOrder(newOrder);
+        var orderSaved =this.saveOrder(newOrder);
+
+        this.orderProducerService.SendOrderToQueue(orderSaved);
     }
 
-    private void saveOrder(Order order){
-        this.orderRepository.save(order);
+    private Order saveOrder(Order order){
+        return this.orderRepository.save(order);
     }
 
 }
