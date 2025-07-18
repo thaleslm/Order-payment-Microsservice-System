@@ -19,7 +19,7 @@ public class OrderConsumer {
     @RabbitListener(queues =  "${queue.name.order}")
     public void listen(@Payload Order order){
         try {
-
+            this.orderService.processOrder(order.getId());
         } catch (RuntimeException e) {
             throw new RuntimeException(e);
         }
