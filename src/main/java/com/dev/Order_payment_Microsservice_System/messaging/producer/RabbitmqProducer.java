@@ -10,8 +10,9 @@ public class RabbitmqProducer {
     private  AmqpTemplate amqpTemplate;
 
     public void send(String exchange, String routingKey, Object playload) throws Exception{
+        Thread.sleep(2000);// simula o processamento
+        
         amqpTemplate.convertAndSend(exchange,routingKey,playload);
-        System.out.println("Success send message!"+ exchange + routingKey+ playload);
     }
 
 }
