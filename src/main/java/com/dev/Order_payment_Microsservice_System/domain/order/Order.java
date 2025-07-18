@@ -1,16 +1,14 @@
 package com.dev.Order_payment_Microsservice_System.domain.order;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity(name="Orders")
 @Table(name="Orders")
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of="id")
 public class Order {
     @Id
