@@ -1,7 +1,7 @@
 
 
 
-# 🧾 Order Payment Microservice System
+# Order Payment Microservice System
 
 Um microsserviço simples de pedidos, feito com **Java 21 + Spring Boot**, que simula o envio e o processamento de pedidos usando **RabbitMQ** como fila de mensagens e **H2** como banco de dados em memória.
 
@@ -15,7 +15,7 @@ Outro componente (consumer) escuta essa fila e atualiza o pedido como `COMPLETED
 
 ---
 
-## 📦 Tecnologias
+## Tecnologias
 
 - Java 21
 - Spring Boot 3.5.3
@@ -28,7 +28,7 @@ Outro componente (consumer) escuta essa fila e atualiza o pedido como `COMPLETED
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 
@@ -56,7 +56,7 @@ Order-payment-Microsservice-System
 
 ---
 
-## ⚙️ Como executar
+## Como executar
 
 ### 1. Clonar o projeto
 
@@ -96,9 +96,9 @@ http://localhost:2020/order
 
 ---
 
-## 🎯 Exemplos de Uso
+## Exemplos de Uso
 
-### 📤 Criar novo pedido (POST `/order`)
+### Criar novo pedido (POST `/order`)
 
 ```http
 POST /order
@@ -118,7 +118,7 @@ Order created successfully
 
 ---
 
-## 🛠️ Configurações principais (`application.properties`)
+## Configurações principais (`application.properties`)
 
 ```properties
 spring.application.name=Order-payment-Microsservice-System
@@ -142,7 +142,7 @@ server.port=2020
 
 ---
 
-## 📌 O que você vai encontrar nesse projeto
+## O que você vai encontrar nesse projeto
 
 * Estruturação de microsserviço em Java
 * Integração com mensageria RabbitMQ
@@ -152,7 +152,7 @@ server.port=2020
 
 ---
 
-## 🧑‍💻 Autor
+## Autor
 
 Feito por **Thales Moreira** — Desenvolvedor.
 Conecte-se no [LinkedIn](https://www.linkedin.com/in/thales-henrique-7827ba227/)!
